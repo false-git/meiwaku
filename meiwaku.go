@@ -35,7 +35,7 @@ func main() {
 
 	d := gomail.NewDialer(conf.MailServer, conf.Port, conf.Username, conf.Password)
 
-	for _, spamfilename := range os.Args {
+	for _, spamfilename := range os.Args[1:] {
 		m := gomail.NewMessage()
 		m.SetHeader("From", conf.From)
 		m.SetHeader("To" , conf.To)
