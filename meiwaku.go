@@ -49,7 +49,6 @@ func main() {
 			if _, err := io.Copy(w, h); err != nil {
 				h.Close()
 				return err
-				return h.Close()
 			}
 			return h.Close()
 		}
