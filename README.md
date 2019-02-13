@@ -5,10 +5,9 @@
 https://www.dekyo.or.jp/soudan/contents/ihan/howto.html
 
 使い方:
-1. 必要なパッケージを持ってくる
+1. 持ってくる
 ```shell
-go get gopkg.in/gomail.v2
-go get github.com/BurntSushi/toml
+go get github.com/false-git/meiwaku
 ```
 2. ~/.config/meiwaku.tomlに設定ファイルを作る。
 ```toml
@@ -19,11 +18,7 @@ Port = 25 ←SMTPサーバのポート
 Username = "" ←SMTP認証のユーザ名
 Password = "" ←SMTP認証のパスワード
 ```
-3. ビルドする
-```shell
-go build
-```
-4. できあがったmeiwakuを好きな場所に置いてPATHを通す。
+4. $GOPATH/bin に PATH を通す。
 5. 以下のコマンドで迷惑メールが報告できる。
 ```shell
 meiwaku <迷惑メールのファイル>
