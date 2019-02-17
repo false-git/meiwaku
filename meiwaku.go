@@ -1,21 +1,21 @@
 package main
 
 import (
+	"fmt"
+	"github.com/BurntSushi/toml"
+	"gopkg.in/gomail.v2"
 	"io"
 	"os"
 	"os/user"
-	"fmt"
-	"gopkg.in/gomail.v2"
-	"github.com/BurntSushi/toml"
 )
 
 type Config struct {
-	From string
-	To string
+	From       string
+	To         string
 	MailServer string
-	Port int
-	Username string
-	Password string
+	Port       int
+	Username   string
+	Password   string
 }
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if _, err := toml.DecodeFile(usr.HomeDir + "/.config/meiwaku.toml", &conf); err != nil {
+	if _, err := toml.DecodeFile(usr.HomeDir+"/.config/meiwaku.toml", &conf); err != nil {
 		panic(err)
 	}
 
@@ -38,7 +38,7 @@ func main() {
 	for _, spamfilename := range os.Args[1:] {
 		m := gomail.NewMessage()
 		m.SetHeader("From", conf.From)
-		m.SetHeader("To" , conf.To)
+		m.SetHeader("To", conf.To)
 		m.SetHeader("Subject", "Forwarded Message")
 		m.SetBody("text/plain", "Forwarded Message\r\n")
 		f := func(w io.Writer) error {
